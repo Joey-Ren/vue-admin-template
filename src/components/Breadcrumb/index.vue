@@ -1,3 +1,11 @@
+<!--
+ * @Author: RenLe
+ * @Date: 2020-09-23 15:35:29
+ * @LastEditors: RenLe
+ * @LastEditTime: 2020-09-23 17:18:41
+ * @Description: file content
+ * @FilePath: /vue-admin-template/src/components/Breadcrumb/index.vue
+-->
 <template>
   <el-breadcrumb class="app-breadcrumb" separator="/">
     <transition-group name="breadcrumb">
@@ -29,12 +37,13 @@ export default {
   methods: {
     getBreadcrumb() {
       // only show routes with meta.title
-      let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
-      const first = matched[0]
+      const matched = this.$route.matched.filter(item => item.meta && item.meta.title)
+      // TODO 优化展示面包屑导航组合规则
+      // const first = matched[0]
 
-      if (!this.isDashboard(first)) {
-        matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
-      }
+      // if (!this.isDashboard(first)) {
+      //   matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
+      // }
 
       this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
     },
